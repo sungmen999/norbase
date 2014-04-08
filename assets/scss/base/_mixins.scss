@@ -1,0 +1,20 @@
+/*******************************************************************************
+    Mixins
+*******************************************************************************/
+
+//-- REM with PX fallback --------------
+
+@mixin rem($propery, $size){
+    #{$propery}: #{$size * 16}px;
+    #{$propery}: #{$size}rem;
+}
+
+//-- Baseline grid helpers -------------
+
+@mixin lined-paper($height: $leading, $color: $light, $extra: 0, $thick: 1) {
+    $thickness: percentage(1 - ((.05 * $thick) / ($height / ($height * 0 + 1))));
+    @include linear-gradient(top, transparent 0, transparent $thickness, $color $thickness, $color 100%);
+    background-repeat: repeat-y;
+    background-size: 100% $height;
+    background-position: 0 (-.02 * $height);
+}

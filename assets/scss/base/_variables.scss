@@ -1,0 +1,66 @@
+/*******************************************************************************
+    Variables
+*******************************************************************************/
+
+//-- Typography ------------------------
+
+    // Settings
+    $base-font-size: 20;
+    $base-line-height: 1.5;
+    $ms-base: 1;
+    $ms-ratio: $fifth;
+    $leading: $base-line-height * 1rem;
+    $body-font: "Roboto Slab", serif;
+    $header-font: "Roboto Condensed", sans-serif;
+
+//-- Colors ----------------------------
+
+    // Branding
+    $base-color: #12223F;
+    $comp-color: #E3C439;
+
+    // Custom
+    $dark: #333;
+    $light: #eee;
+    $text: $dark;
+
+    // Warnings & info
+    $success-color: #27ae60;
+    $info-color: #3498db;
+    $warning-color: #e67e22;
+    $danger-color: #e74c3c;
+
+    // Links
+    $link-color: $comp-color;
+    $link-color-hover: tint($link-color, 20%);
+    $link-color-visited: $link-color-hover;
+    $link-color-focus: tint($link-color-hover, 20%);
+
+    // Selection
+    $selection: $comp-color;
+    $selection-text: #fff;
+
+//-- Animation -------------------------
+
+    $duration: .25s;
+    $easing: ease-in-out;
+
+//-- Shadows ---------------------------
+
+    $shadow: 0 1px 1px tint($dark, 90%);
+
+//-- Border radius ---------------------
+
+    $radius: 2px;
+    $radius-big: 12px;
+
+//-- Media querys ----------------------
+
+    $mq-xs: 320px;
+    $mq-s: 480px;
+    $mq-m: 768px;
+    $mq-l: 1024px;
+    $mq-xl: 1200px;
+    $mq-xxl: 1600px;
+
+

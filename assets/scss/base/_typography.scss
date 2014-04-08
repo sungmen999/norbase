@@ -1,0 +1,166 @@
+/*******************************************************************************
+    Typography
+*******************************************************************************/
+
+//-- Base ------------------------------
+
+html {
+    @include rem(font-size, $base-font-size / 16);
+}
+
+body {
+    font-family: $body-font;
+    color: $text;
+    line-height: $leading;
+    -webkit-font-smoothing: antialiased;
+}
+
+//-- Bodycopy & lists ------------------
+
+p {
+    line-height: $leading;
+    margin-top: 0;
+    margin-bottom: $leading;
+}
+
+.lead { font-size: 1.2em; }
+
+ul, ol {
+    margin-top: $leading;
+    margin-bottom: $leading;
+
+    li { line-height: $leading; }
+
+    ul, ol {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+menu, dir {
+    margin-top: $leading;
+    margin-bottom: $leading;
+}
+
+blockquote {
+    line-height: $leading;
+    margin-top: $leading;
+    margin-bottom: $leading;
+
+    &:before {
+        font-family: Georgia, serif;
+        content: open-quote;
+        font-size: 3em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+    }
+
+    > p { display: inline; }
+}
+
+//-- Headings --------------------------
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $header-font;
+    margin-top: 0;
+    margin-bottom: $leading;
+    line-height: $leading;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+h1 {
+    @include rem(font-size, ms(4));
+    line-height: 3 * $leading;
+    margin-top: 2 * $leading;
+}
+
+h2 {
+    @include rem(font-size, ms(3));
+    line-height: 2 * $leading;
+    margin-top: 2 * $leading;
+}
+
+h3 {
+    @include rem(font-size, ms(2));
+    line-height: 1.5 * $leading;
+    margin-top: 2 * $leading;
+    margin-bottom: .5 * $leading;
+
+    &.lines-mod-2-0 { margin-bottom: 1 * $leading; }
+}
+
+h4 {
+    @include rem(font-size, ms(1));
+    margin-top: 1.5 * $leading;
+    margin-bottom: .5 * $leading;
+}
+
+h5 { @include rem(font-size, ms(0)); }
+
+h6 { @include rem(font-size, ms(-1)); }
+
+//-- Tables ----------------------------
+
+table {
+    margin-bottom: $leading;
+    border-spacing: 0px;
+    border-collapse: collapse;
+
+    td, th {
+        padding: 0;
+        line-height: $base-line-height * $base-font-size + 0px;
+    }
+}
+
+//-- Links -----------------------------
+
+a {
+    &:link { color: $link-color; }
+    &:visited { color: $link-color-visited; }
+    &:hover { color: $link-color-hover; }
+    &:focus,
+    &:active { color: $link-color-focus; }
+}
+
+//-- Selected text ---------------------
+
+::selection {
+    background-color: $selection;
+    color: $selection-text;
+}
+
+::-moz-selection {
+    background-color: $selection;
+    color: $selection-text;
+}
+
+//-- Other elements --------------------
+
+abbr,
+acronym {
+    cursor: help;
+}
+
+code,
+kbd,
+samp,
+small,
+big,
+tt { vertical-align: bottom; }
+
+//-- Helpers --------------------------
+
+.hug {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.hug--top {
+    margin-top: 0;
+}
+
+.hug--bottom {
+    margin-bottom: 0;
+}

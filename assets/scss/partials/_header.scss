@@ -1,0 +1,41 @@
+/*******************************************************************************
+    Header styling
+*******************************************************************************/
+
+.site-header {
+    @include outer-container;
+    margin-top: $leading * 2;
+    height: $leading * 2;
+}
+
+.site-header.sticky {
+    @include position(fixed, 0px 0px 0 0px);
+    margin: 0;
+}
+
+.logo-wrapper {
+    @include transition(all $duration $easing);
+    @include size(3em);
+    float: left;
+    padding: .5em;
+    background: $base-color;
+}
+
+.logotype {
+    @include transition(all $duration $easing);
+    @include size(2em);
+    opacity: 0.5;
+}
+
+.logo-wrapper:hover .logotype {
+    @include transform(rotateZ(135deg));
+}
+
+.logo-byline {
+    @include transition(all $duration $easing);
+    float: left;
+    line-height: $leading * 2;
+    padding: 0 1em;
+    color: #fff;
+    background: $comp-color;
+}

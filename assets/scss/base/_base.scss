@@ -1,0 +1,258 @@
+/*******************************************************************************
+    Very basic site wide styling
+*******************************************************************************/
+
+body {
+    @include lined-paper;
+    position: relative;
+    padding: 0 5%;
+}
+
+.wrapper { @include outer-container; }
+
+.first.sticky { margin-top: $leading * 6; }
+
+article { @include span-columns(8); }
+
+aside { @include span-columns(4); }
+
+.component-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        position: relative;
+        padding: 0 0 0 30%;
+        margin-bottom: $leading;
+    }
+
+    li:before { @include position(absolute, 0px 0 0 0px); }
+
+    .textinput:before { content: "Text input:"; }
+    .textarea:before { content: "Textarea:"; }
+    .radiobuttons:before { content: "Radio buttons:"; }
+    .checkboxes:before { content: "Check boxes:"; }
+    .select:before { content: "Select list:"; }
+    .submit:before { content: "Submit buttons:"; }
+}
+
+.button {
+    padding: ($leading / 2) 1.6em;
+    border: none;
+    border-radius: $radius;
+    text-decoration: none;
+    height: $leading * 2;
+
+    &:focus { outline: none; }
+}
+
+.button--light {
+    @extend .button;
+    color: $dark!important;
+    background: #fff;
+    box-shadow:
+        $shadow,
+        inset 0 0 0 1px tint($dark, 75%)
+    ;
+}
+
+.button--dark {
+    @extend .button;
+    color: #fff!important;
+    background: $dark;
+    box-shadow:
+        $shadow,
+        inset 0 0 0 1px shade($dark, 100%);
+}
+
+.icheckbox,
+.iradio {
+    float: left;
+    display: block;
+    *display: inline;
+    vertical-align: middle;
+    margin: .15em .5em 0 0;
+    padding: 0;
+    width: $leading / 1.2;
+    height: $leading / 1.2;
+    background-color: #fff;
+    cursor: pointer;
+    border: 1px solid tint($dark, 75%);
+    box-shadow: $shadow;
+    border-radius: $radius;
+    position: relative;
+
+    &:after {
+        @include position(absolute, 50% 0 0 50%);
+        pointer-events: none;
+        content: "";
+        width: $leading / 2;
+        height: $leading / 2;
+        margin-top: -($leading / 4);
+        margin-left: -($leading / 4);
+    }
+}
+
+.icheckbox:after {
+    height: $leading / 4;
+    margin-top: -($leading / 8);
+}
+
+.icheckbox.checked {
+    &:after {
+        border-radius: 1px;
+        background: $comp-color;
+    }
+}
+
+.icheckbox.disabled { cursor: default; }
+
+.icheckbox.checked.disabled:after { background: tint($dark, 90%); }
+
+.iradio { border-radius: 100%; }
+
+.iradio.checked {
+    &:after {
+        border-radius: 100%;
+        background: $comp-color;
+    }
+}
+
+.iradio.disabled { cursor: default; }
+
+.iradio.checked.disabled:after { background: tint($dark, 90%); }
+
+
+div.fancy-select { position: relative; }
+
+div.fancy-select.disabled { opacity: 0.5; }
+
+div.fancy-select select:focus + div.trigger {
+    border: 1px solid tint($dark, 50%);
+}
+
+div.fancy-select select:focus + div.trigger.open {
+    border: 1px solid tint($dark, 75%);
+}
+
+div.fancy-select div.trigger {
+    @include transition(all $duration ease-out);
+    cursor: pointer;
+    padding: ($leading / 2) 1.6em ($leading / 2) .6em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    background: #fff;
+    width: 100%;
+    height: $leading * 2;
+    border: 1px solid tint($dark, 75%);
+    box-shadow: $shadow;
+    border-radius: $radius;
+}
+
+div.fancy-select div.trigger:after {
+    @include position(absolute, 47% .5em 0 0);
+    @include triangle(.75em, $dark, down);
+    content: "";
+}
+
+div.fancy-select div.trigger.open {
+    border: 1px solid tint($dark, 50%);
+    box-shadow: none;
+}
+
+div.fancy-select div.trigger.open:after {
+    border-top-color: tint($dark, 75%);
+}
+
+div.fancy-select ul.options {
+    @include transition(
+        opacity $duration ease-out,
+        top $duration ease-out,
+        visibility $duration ease-out
+    );
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 2.5em;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 50;
+    max-height: 200px;
+    overflow: auto;
+    background: #fff;
+    border: 1px solid tint($dark, 75%);
+    box-shadow: $shadow;
+    border-radius: $radius;
+    width: 100%;
+}
+
+div.fancy-select ul.options.open {
+    @include transition(
+        opacity $duration ease-out,
+        top $duration ease-out
+    );
+    visibility: visible;
+    top: 3.2em;
+    opacity: 1;
+}
+
+div.fancy-select ul.options.overflowing {
+    @include transition(
+        opacity $duration ease-out,
+        bottom $duration ease-out,
+        visibility $duration ease-out
+    );
+    top: auto;
+    bottom: 2.5em;
+}
+
+div.fancy-select ul.options.overflowing.open {
+    @include transition(
+        opacity $duration ease-out,
+        bottom $duration ease-out
+    );
+    top: auto;
+    bottom: 3em;
+}
+
+div.fancy-select ul.options li {
+    @include transition(all $duration $easing);
+    padding: ($leading / 2) .6em ($leading / 2) .6em;
+    cursor: pointer;
+    white-space: nowrap;
+    margin: 0;
+    border: none;
+}
+
+div.fancy-select ul.options li.selected {
+    background: $dark;
+    color: #fff;
+}
+
+div.fancy-select ul.options li.hover { background: $light; }
+
+textarea,
+input[type="text"] {
+    border: 1px solid tint($dark, 75%);
+    box-shadow: $shadow;
+    border-radius: $radius;
+    resize: none;
+    padding: $leading / 2;
+    display: block;
+    width: 100%;
+
+    &:focus {
+        outline: none;
+        box-shadow: $shadow;
+        border: 1px solid tint($dark, 50%);
+    }
+}
+
+input[type="text"] { height: $leading * 2; }
+
+textarea { height: $leading * 6; }

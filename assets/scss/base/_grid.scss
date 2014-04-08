@@ -1,0 +1,33 @@
+/*******************************************************************************
+    Neat grid system
+*******************************************************************************/
+
+//-- Import helpers --------------------
+
+@import "vendor/neat/neat-helpers";
+
+//-- Grid settings ---------------------
+
+$column: 60px;
+$gutter: 40px;
+$grid-columns: 12;
+$max-width: 65em;
+
+//-- Breakpoints -----------------------
+
+$xs: new-breakpoint(min-width $mq-xs);
+$xs-s: new-breakpoint(min-width $mq-xs max-width $mq-s);
+$s: new-breakpoint(min-width $mq-s);
+$s-m: new-breakpoint(min-width $mq-s max-width $mq-m);
+$m: new-breakpoint(min-width $mq-m);
+$m-l: new-breakpoint(min-width $mq-m max-width $mq-l);
+$l: new-breakpoint(min-width $mq-l);
+$l-xl: new-breakpoint(min-width $mq-l max-width $mq-xl);
+$xl: new-breakpoint(min-width $mq-xl);
+$xl-xxl: new-breakpoint(min-width $mq-xl max-width $mq-xxl);
+$xxl: new-breakpoint(min-width $mq-xxl);
+
+
+//-- Import grid system ----------------
+
+@import "vendor/neat/neat";
